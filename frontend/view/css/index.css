@@ -1,0 +1,179 @@
+.column {
+  float: left;
+  width: 40%;
+  /*background: gray;*/
+  /*width: 100%;*/
+  height: 100%;
+}
+.menu {
+  float: left;
+  width: 20%;
+  /* background-color: #F8F8F8; */
+  background-color: blue;
+  height: 100%;
+  /*#container {*/
+    /*margin: 20px auto;*/
+    /*max-width: 600px;*/
+/*}*/
+}
+
+.square {
+    width: 100%;
+    background: #F8F8F8;
+    padding-bottom: 30%;
+    float: left;
+    margin: 1.66%;
+    transition: background 0.8s;
+    -webkit-transition: background 0.8s;
+    -moz-transition: background 0.8s;
+}
+
+.softwareName {
+  border: red;
+    background: red;
+    /*text-transform: uppercase;*/
+    height: 5%;
+    font-weight: 700;
+    /*color: steelblue;*/
+    letter-spacing: 1px;
+    font-size: inherit;
+    transition: all 0.2s;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    outline: none;
+
+}
+.file{
+    width: 100%;
+    background: purple;
+    padding: 5%;
+    float: center;
+    margin: 1.66%;
+    /*border-radius: 15%;*/
+    transition: background 0.8s;
+    -webkit-transition: background 0.8s;
+    -moz-transition: background 0.8s;
+}
+
+/* .row{
+  /* width: 100%;
+  height: 100%; */
+  /* border-color: red; */
+
+/* } */
+
+
+.saveInfo{
+  width: 100%;
+  height: 5%;
+  background: gold;
+}
+
+#nameInput{
+  width: 100%;
+  height: 100%;
+  background: purple;
+  /* border-color: #00000; */
+  /* padding: 0px;
+  margin: 0px; */
+  display: inline;
+  /*padding-bottom: 30%;*/
+  /* height: 5%; */
+  /* float: center; */
+  /* position:absolute; */
+  /* bottom: 0; */
+  /* right: 0; */
+  /*margin: 1.66%;*/
+  /* transition: background 0.8s; */
+  /* -webkit-transition: background 0.8s; */
+  /* -moz-transition: background 0.8s; */
+  /*display: inline-block;*/
+  /*width: 20%;*/
+  /* text-transform: uppercase; */
+  /* font-weight: 500; */
+  /*color: steelblue;*/
+  /* font-size: 150%; */
+  /*margin-top: 25%*/
+  /*letter-spacing: 1px;*/
+  /*font-size: inherit;*/
+  /* text-align: center; */
+  /*line-height: 25px;*/
+}
+
+#save {
+    width: 100%;
+    background:     #32CD32;
+    /*margin: 0;*/
+    /* height: 100%; */
+    display:inline;
+    /*padding-bottom: 30%;*/
+    /* height: 5%; */
+    /* float: center; */c
+    /* position:absolute; */
+    /* bottom: 0; */
+    /* right: 0; */
+    /*margin: 1.66%;*/
+    /* transition: background 0.8s; */
+    /* -webkit-transition: background 0.8s; */
+    /* -moz-transition: background 0.8s; */
+    /*display: inline-block;*/
+    /*width: 20%;*/
+    text-transform: uppercase;
+    /* font-weight: 500; */
+    /*color: steelblue;*/
+    /* font-size: 150%; */
+    /*margin-top: 25%*/
+    /*letter-spacing: 1px;*/
+    /*font-size: inherit;*/
+    /* text-align: center; */
+    /*line-height: 25px;*/
+}
+
+
+
+table{
+    width: 100%;
+    height: 5%;
+}
+/*td{
+    width:100%;
+}*/
+html{width: 100%;
+    height:100%;
+}
+body{
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+  height: 100%;
+
+}
+label{
+    /*position: absolute;*/
+    background:yellow;
+    display: block;
+
+    height: 95%;
+    min-width: 100%;
+    /* margin: 10px; */
+}
+
+
+textarea {
+    /*padding: 10px;*/
+    /*border: 15px solid silver;*/
+    resize: none;
+    outline: none;
+    width: 100%;
+    /*padding: -10px;*/
+    border: none;
+    height: 100%;
+    /*margin: 20px auto;*/
+
+    /* Clear floats after the columns */
+    /*.row:after {
+      content: "";
+      display: table;
+      clear: both;
+  }*/
+}
