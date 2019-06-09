@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 import glob
+import os
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -12,31 +13,42 @@ path = "../html_files"
 
 @app.route("/save", methods=['POST'])
 def save():
-    input('here')
-    print(request.data)
-    input('out')
-    filename = request.json['filename']
-    file = request.json['file']
-    input(file)
+    try:
+        filename = request.json['filename']
+        file = request.json['file']
 
-    f = open('{}/{}.html'.format(path, filename), 'w+')
-    f.write(file)
-    f.close()
+        f = open('{}/{}.html'.format(path, filename), 'w+')
+        f.write(file)
+        f.close()
 
-    print('complete')
-
-    return jsonify({'complete': 'OK'})
+        return jsonify({'message': 'ok'})
+    except Exception as ex:
+        return jsonify({'message': 'error'})
 
 
 @app.route("/load", methods=['GET'])
 def load_files():
-    html_files = {}
+    try:
+        html_files = {}
 
-    for filename in glob.glob('{}/*.html'.format(path)):
-        html_files[filename.split(
-            '/')[-1]] = open('{}'.format(filename), 'r+').read()
+        for filename in glob.glob('{}/*.html'.format(path)):
+            html_files[filename.split(
+                '/')[-1]] = open('{}'.format(filename), 'r+').read()
 
-    return jsonify(html_files)
+        return jsonify(html_files)
+    except Exception as ex:
+        return jsonify({'message': 'error'})
+
+
+@app.route("/delete", methods=['POST'])
+def delete_file():
+    try:
+        filename = request.json['filename']
+        os.remove('{}/{}'.format(path, filename))
+
+        return jsonify({'message': 'ok'})
+    except Exception as ex:
+        return jsonify({'message': 'error'})
 
 
 if __name__ == '__main__':

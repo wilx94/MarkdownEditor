@@ -1,15 +1,12 @@
 // Libraries
 var converter = new showdown.Converter();
 
-// text      = '# hello, markdown!',
-// html      = converter.makeHtml(text);
-// console.log(html)
 
 // Components
 var textArea = document.querySelector("textarea");
-var showArea = document.querySelector("label");
+var showArea = document.querySelector(".label");
 var nameInput = document.querySelector("#nameInput");
-var save = document.querySelector("#save");
+var save = document.querySelector("#saveButton");
 var file_container = document.querySelector(".files");
 var files = null;
 var files_data = {}
@@ -19,17 +16,7 @@ var files_data = {}
 loadFiles();
 
 
-
-// console.log(files_data);
-
-
-
 textArea.addEventListener('keyup', function(){
-    // var text = textArea.value
-    console.log('here')
-    console.log(textArea.value)
-    console.log('after')
-    // console.log(converter.makeHtml(text))
     showArea.innerHTML = converter.makeHtml(textArea.value);
 });
 
@@ -74,7 +61,7 @@ function loadFiles(){
         files_to_add = "";
         
         for (var key in files_data){
-            files_to_add = files_to_add + "<div class='file'>"+ key +"</div>";
+            files_to_add = files_to_add + "<button class=\"file\">"+ key +"</button>";
         }
 
         file_container.innerHTML = files_to_add;
@@ -83,13 +70,37 @@ function loadFiles(){
     });
 }
 
+
 function addEventListenerToFiles(files){
     files.forEach(function(file){
-        file.addEventListener('contextmenu', function(){
-            alert('file will be deleted');
+        file.addEventListener('dblclick', function(){
+            $.ajax({
+                url:'http://localhost:8000/delete', 
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({filename: file.textContent }),
+                headers: {
+                        'Content-Type': 'application/json',
+                        "Accept": 'application/json',
+                    },
+                success: function(data){
+                    loadFiles();
+                    alert('Your file was deleted!');
+                }
+            });
         });
+        
         file.addEventListener('click', function(){
-            alert('file will be edited');
+            // alert('file will be edited');
+            console.log('here');
+            var filename = file.textContent;
+            var data = files_data[filename];
+            textArea.value = converter.makeMarkdown(data);
+            showArea.innerHTML = data;
+            nameInput.value = filename.split('.html')[0];
+
+
         });
     });
 }
