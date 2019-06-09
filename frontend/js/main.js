@@ -12,9 +12,13 @@ var files = null;
 var files_data = {}
 
 
-
+// Load files when load the web page
 loadFiles();
 
+
+
+// EVENT LISTENERS
+//  ** Inside addEventListenerToFiles function we have two others EventListeners
 
 textArea.addEventListener('keyup', function(){
     showArea.innerHTML = converter.makeHtml(textArea.value);
@@ -52,9 +56,9 @@ save.addEventListener('click', function(){
 
 
 
+// FUNTIONS
 
 // get all files 
-
 function loadFiles(){
     $.get('http://localhost:8000/load', function(data){
         files_data = data;
@@ -70,7 +74,7 @@ function loadFiles(){
     });
 }
 
-
+// Add event listener to file buttons
 function addEventListenerToFiles(files){
     files.forEach(function(file){
         file.addEventListener('dblclick', function(){
@@ -104,4 +108,3 @@ function addEventListenerToFiles(files){
         });
     });
 }
-
